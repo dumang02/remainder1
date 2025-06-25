@@ -1,0 +1,17 @@
+{% extends 'myapp/dashboard.html' %}
+{% block title %}Overdue Reminders{% endblock %}
+{% block content %}
+<div class="card p-4 shadow">
+  <h2 class="mb-4">❌ Missed/Expired Reminders</h2>
+  <ul class="list-group">
+    {% for patient in patients %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{ patient.full_name }} - {{ patient.city }}
+      <span class="badge bg-danger">Expired {{ patient.days_overdue }} days ago</span>
+    </li>
+    {% empty %}
+    <li class="list-group-item text-muted">No missed reminders.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

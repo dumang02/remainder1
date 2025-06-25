@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-image: url('/static/img/lo.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+        }
+        .login-card {
+            background: rgba(34, 34, 34, 0.6);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            padding: 2rem 2rem 1.5rem 2rem;
+            color: #fff;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 1rem auto;
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+        .web-name {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+        .container, .row {
+            height: 100vh;
+        }
+        .row {
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .col-md-5 {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .login-card {
+            margin-right: 2vw;
+        }
+        .form-label, .form-control {
+            color: #fff;
+            background: transparent;
+        }
+        .form-control {
+            border: 1px solid #ccc;
+        }
+        .btn-primary {
+            background-color: #4e9cff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #357ab8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="login-card">
+                    <img src="/static/img/1.png" alt="Logo" class="logo">
+                    <div class="web-name">LifeCapsule Admin</div>
+                    <h2 class="text-center mb-4">Login</h2>
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            Please correct the error{{ form.errors|length|pluralize }} below.
+                        </div>
+                    {% endif %}
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="id_email" class="form-label">Email</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="mb-3 position-relative">
+                            <label for="id_password" class="form-label">Password</label>
+                            <div class="input-group">
+                                {{ form.password }}
+                                <button type="button" class="btn btn-outline-secondary" id="togglePassword" tabindex="-1">
+                                    <span id="togglePasswordIcon" class="bi bi-eye"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('id_password');
+        const togglePassword = document.getElementById('togglePassword');
+        const toggleIcon = document.getElementById('togglePasswordIcon');
+
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            // Toggle icon
+            if (type === 'text') {
+                toggleIcon.classList.remove('bi-eye');
+                toggleIcon.classList.add('bi-eye-slash');
+            } else {
+                toggleIcon.classList.remove('bi-eye-slash');
+                toggleIcon.classList.add('bi-eye');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* =============================
+   File: bootstrap-custom.css
+   Path: /static/css/bootstrap-custom.css
+   Purpose: Unique and modern customization for all pages
+============================= */
+
+/* Root brand theme */
+:root {
+    --bs-primary: #0057ff;
+    --bs-secondary: #6c757d;
+    --bs-success: #17c964;
+    --bs-danger: #f31260;
+    --bs-warning: #f5a524;
+    --bs-info: #3b82f6;
+    --bs-light: #f5f5f5;
+    --bs-dark: #1e1e1e;
+    --bs-font-sans-serif: 'Inter', system-ui, sans-serif;
+}
+
+/* Typography */
+body {
+    font-family: var(--bs-font-sans-serif);
+    line-height: 1.6;
+    background-color: #f9fbfd;
+    color: #333;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: 700;
+    color: #003366;
+}
+
+/* Container */
+.container {
+    max-width: 1180px;
+    padding: 1rem 1rem;
+}
+
+/* Navbar */
+.navbar-dark .navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: var(--bs-warning) !important;
+    border-bottom: 2px solid var(--bs-warning);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--bs-primary);
+    border: none;
+    font-weight: 600;
+    border-radius: 0.75rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #003edc;
+}
+
+/* Cards */
+.card {
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #eaeaea;
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--bs-primary);
+}
+
+/* Forms */
+.form-control {
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+input:focus, textarea:focus, select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0,87,255,0.25);
+    border-color: var(--bs-primary);
+}
+
+/* Tables */
+.table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: var(--bs-primary);
+    color: white;
+    font-weight: 600;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f4f9ff;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bs-light);
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    color: #666;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .card {
+        padding: 1rem;
+    }
+    .form-control {
+        font-size: 0.95rem;
+    }
+}

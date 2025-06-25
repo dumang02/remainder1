@@ -1,0 +1,37 @@
+<!-- templates/myapp/reminder_pdf_template.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #000; padding: 8px; }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Medicine Collection Reminders</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Medicine Type</th>
+                <th>Expiry Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in reminders %}
+            <tr>
+                <td>{{ user.full_name }}</td>
+                <td>{{ user.phone_number }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.medicine_type }}</td>
+                <td>{{ user.expiry_date|date:"Y-m-d" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

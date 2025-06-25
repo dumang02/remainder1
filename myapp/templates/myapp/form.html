@@ -1,0 +1,66 @@
+{% extends 'myapp/dashboard.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}New Patient Registration{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="card shadow-sm p-4">
+    <h2 class="mb-4">📝 Register New Patient</h2>
+
+    {% if form.errors %}
+    <div class="alert alert-danger">
+        <strong>Please fix the following errors:</strong>
+        <ul>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label for="id_full_name" class="form-label">Full Name</label>
+          {{ form.full_name|add_class:"form-control text" }}
+        </div>
+        <div class="col-md-6">
+          <label for="id_phone_number" class="form-label">Phone Number</label>
+          {{ form.phone_number|add_class:"form-control text" }}
+        </div>
+        <div class="col-md-12">
+          <label for="id_address" class="form-label">Address</label>
+          {{ form.address|add_class:"form-control text" }}
+        </div>
+        <div class="col-md-6">
+          <label for="id_city" class="form-label">City</label>
+          {{ form.city|add_class:"form-control text" }}
+        </div>
+        <div class="col-md-6">
+          <label for="id_medicine_type" class="form-label">Medicine Type</label>
+          {{ form.medicine_type|add_class:"form-control text" }}
+        </div>
+        <div class="col-md-6">
+          <label for="id_reminder_duration" class="form-label">Reminder Duration</label>
+          {{ form.reminder_duration|add_class:"form-control text" }}
+        </div>
+        <div class="col-md-6">
+          <label for="id_photo" class="form-label">Passport Size Photo</label>
+          <input type="file" name="photo" class="form-control" id="id_photo" accept="image/*" capture="environment">
+        </div>
+        
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-5">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

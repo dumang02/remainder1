@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LifeCapsule Admin{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pages.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-custom.css' %}">
+
+    <!-- Custom JS -->
+    <script src="{% static 'js/pages.js' %}" defer></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', sans-serif;
+            background: url("{% static 'img/image.png' %}") no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(30, 34, 90, 0.55);
+            z-index: 0;
+        }
+        main, .hero-section, .dashboard-cards, nav, footer {
+            position: relative;
+            z-index: 1;
+        }
+        .navbar-brand { font-weight: 700; font-size: 1.5rem; letter-spacing: 1px; }
+        .nav-link.active, .nav-link:hover { color: #ffd700 !important; }
+        .hero-section {
+            background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
+            color: #fff;
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem 2rem 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 24px rgba(78,84,200,0.12);
+            text-align: center;
+        }
+        .dashboard-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2.5rem;
+        }
+        .dashboard-card {
+            background: #fff;
+            border-radius: 1.25rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            padding: 2rem 1.5rem;
+            min-width: 220px;
+            max-width: 260px;
+            text-align: center;
+            transition: transform 0.18s, box-shadow 0.18s;
+            cursor: pointer;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 8px 32px rgba(78,84,200,0.18);
+        }
+        .dashboard-card i {
+            font-size: 2.2rem;
+            margin-bottom: 0.7rem;
+            color: #4e54c8;
+        }
+        .dashboard-card h5 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .dashboard-card p {
+            color: #6c757d;
+            font-size: 0.98rem;
+        }
+        .footer-social a {
+            color: #4e54c8;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+            transition: color 0.18s;
+        }
+        .footer-social a:hover { color: #ffd700; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm" style="background: linear-gradient(90deg, #ff6a00 0%, #ee0979 100%);">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{% static 'img/1.png' %}" alt="Logo" style="height: 2.1rem; margin-right:0.5rem; vertical-align: middle;"> LifeCapsule Admin
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}"><i class="fa fa-home me-1"></i>Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'medicine_form' %}"><i class="fa fa-user-plus me-1"></i>Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'setall_patientst' %}"><i class="fa fa-users me-1"></i>Patients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'before_reminders' %}"><i class="fa fa-bell me-1"></i>Reminder</a></li
+                    <li class="nav-item"><a class="nav-link" href="{% url 'setting' %}"><i class="fa fa-cog me-1"></i>Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+   
+
+    <!-- Page Content -->
+    <main class="container py-4 flex-grow-1">
+        {% block content %}  
+        
+        <section class="hero-section container">
+            <h1 class="display-5 fw-bold mb-2">Welcome to LifeCapsule Admin</h1>
+            <p class="lead mb-3">Effortlessly manage patient registrations, reminders, and settings with a modern, intuitive dashboard.</p>
+            <a href="{% url 'medicine_form' %}" class="btn btn-warning btn-lg shadow-sm px-4 py-2 mt-2">Get Started <i class="fa fa-arrow-right ms-2"></i></a>
+        </section>
+    
+        <!-- Dashboard Cards -->
+        <div class="dashboard-cards container">
+            <a href="{% url 'medicine_form' %}" class="dashboard-card text-decoration-none">
+                <i class="fa fa-user-plus"></i>
+                <h5>Register Patient</h5>
+                <p>Add new patients and their details to the system.</p>
+            </a>
+            <a href="{% url 'setall_patientst' %}" class="dashboard-card text-decoration-none">
+                <i class="fa fa-users"></i>
+                <h5>View Patients</h5>
+                <p>Browse and manage all registered patients.</p>
+            </a>
+            <a href="{% url 'before_reminders' %}" class="dashboard-card text-decoration-none">
+                <i class="fa fa-bell"></i>
+                <h5>Reminders</h5>
+                <p>Check and send reminders before medicine time.</p>
+            </a>
+            <a href="{% url 'setting' %}" class="dashboard-card text-decoration-none">
+                <i class="fa fa-cog"></i>
+                <h5>Settings</h5>
+                <p>Customize your dashboard preferences.</p>
+            </a>
+        </div>
+        
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center mt-5 mb-3">
+        <div class="footer-social mb-2">
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <small>&copy; 2025 Medicine Web. All rights reserved. 
+          <a> Devlopd by:-Umang Darji</a> 
+        </small>
+    </footer>
+
+</body>
+</html>

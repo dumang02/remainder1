@@ -1,0 +1,76 @@
+<!-- templates/myapp/before_reminder.html -->
+{% extends 'myapp/dashboard.html' %}
+{% block title %}Before Reminder List{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Upcoming Medicine Collection Reminders (2 Days Before Expiry)</h2>
+
+    <div class="mb-3">
+        <a href="{% url 'download_before_pdf' %}" class="btn btn-danger">Download PDF</a>
+        <a href="{% url 'download_before_excel' %}" class="btn btn-success">Download Excel</a>
+    </div>
+
+    {% if reminders %}
+    <table class="table table-bordered">
+        <thead>q
+            <tr>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Medicine Type</th>
+                <th>Expiry Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in reminders %}
+            <tr>
+                <td>{{ user.full_name }}</td>
+                <td>{{ user.phone_number }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.medicine_type }}</td>
+                <td>{{ user.expiry_date|date:"Y-m-d" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No upcoming reminders in the next 2–3 days.</p>
+    {% endif %}
+
+
+    <h2>Upcoming Medicine Collection Reminders (1 Days Before Expiry)</h2>
+
+    <div class="mb-3">
+      <a href="{% url 'download_one_day_pdf' %}" class="btn btn-danger">Download PDF</a>
+      <a href="{% url 'download_one_day_excel' %}" class="btn btn-success">Download Excel</a>
+  </div>
+
+    {% if reminders %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Medicine Type</th>
+                <th>Expiry Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in reminders %}
+            <tr>
+                <td>{{ user.full_name }}</td>
+                <td>{{ user.phone_number }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.medicine_type }}</td>
+                <td>{{ user.expiry_date|date:"Y-m-d" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No reminders for 1 day before expiry.</p>
+    {% endif %}
+</div>
+{% endblock %}

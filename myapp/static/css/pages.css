@@ -1,0 +1,86 @@
+/* =========================
+   File: pages.css
+   Path: /static/css/pages.css
+   Purpose: Style for form, table views, settings, and reminder pages
+========================= */
+
+/* General page padding */
+main.container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Headings */
+h2 {
+    font-weight: 700;
+    color: #0d6efd;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+/* Form layout */
+form .form-floating {
+    margin-bottom: 1rem;
+}
+
+form input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+button[type="submit"] {
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px 30px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0b5ed7;
+    color: white;
+}
+
+/* Table styling */
+.table {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.table th {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.table td, .table th {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+/* List styling */
+.list-group-item {
+    border: none;
+    background-color: #f8f9fa;
+    margin-bottom: 6px;
+    border-left: 5px solid #0d6efd;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.list-group-item-danger {
+    border-left: 5px solid #dc3545;
+    background-color: #fff0f0;
+}
+
+/* Settings page */
+.settings-section {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
